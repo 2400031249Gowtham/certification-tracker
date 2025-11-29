@@ -19,9 +19,7 @@ const certificationReducer = (state, action) => {
     case 'DELETE_CERTIFICATION':
       return {
         ...state,
-        certifications: state.certifications.filter(
-          cert => cert.id !== action.payload
-        )
+        certifications: state.certifications.filter(cert => cert.id !== action.payload)
       };
     default:
       return state;

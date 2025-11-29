@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CertificationProvider } from "./context/CertificationContext";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import AddCertification from "./pages/AddCertification";
+import ViewCertifications from "./pages/ViewCertifications";
+import RenewalPage from "./pages/RenewalPage";
+import "./styles/App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CertificationProvider>
+      <BrowserRouter>
+        <Navbar />
+        <div style={{ padding: "20px" }}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/certifications" element={<ViewCertifications />} />
+            <Route path="/certifications/add" element={<AddCertification />} />
+            <Route path="/renewals" element={<RenewalPage />} />
+          </Routes>
+        </div>
+        <Footer />
+      </BrowserRouter>
+    </CertificationProvider>
   );
 }
 
